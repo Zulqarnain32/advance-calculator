@@ -21,7 +21,7 @@ body{
 p{
     color: rgb(65, 70, 70);
     position: absolute;
-    top: 17px;
+    top: 19px;
     left: 26px;
     font-size: 10px;
     font-family: sans-serif;
@@ -48,7 +48,7 @@ p{
 #fixdate{
     color: rgb(65, 70, 70);
     position: absolute;
-    top: 17px;
+    top: 19px;
     right: 90px;
     font-size: 10px;
     font-family: sans-serif;
