@@ -13,17 +13,16 @@
        <p id = "time"> 00:00:00</p>
        <div class="line"></div>
        <div class="circle"></div>
+       <div id="fixdate">00-00-00</div>
        <i class="fa-solid fa-battery-three-quarters" id="battery"></i>
        <i class="fa-solid fa-wifi" id="wifi"></i>
        <i class="fa-solid fa-house-chimney" id="house"></i>
        <i class="fa-solid fa-bars" id="menu"></i>
        <i class="fa-solid fa-volume-high" id="volume"></i>
-
-
     <div class="form-style">
+
         <form name ="forms" >
             <input type="text" name="answer" placeholder="0"><br>
-
             <div class="small-container">
             <input type="button"class="blue" value = "AC" onclick ="forms.answer.value = ''">
             <input type="button"class="blue" value = "+/-" onclick ="forms.answer.value += '+/-'">
@@ -36,26 +35,14 @@
             <input type="button" value = "4" onclick ="forms.answer.value += '4'">
             <input type="button" value = "5" onclick ="forms.answer.value += '5'">
             <input type="button" value = "6" onclick ="forms.answer.value += '6'">
-            <input type="button"class ="blue1" value = "-" onclick ="forms.answer.value += '-'">
-            
+            <input type="button"class ="blue1" value = "-" onclick ="forms.answer.value += '-'">       
             <input type="button" value = "1" onclick ="forms.answer.value += '1'">
             <input type="button" value = "2" onclick ="forms.answer.value += '2'">
-            <input type="button" value = "3" onclick ="forms.answer.value += '3'">
-           
+            <input type="button" value = "3" onclick ="forms.answer.value += '3'">     
             <input type="button" value = "0" onclick ="forms.answer.value += '0'">
-            
-            
-         
-            <input type="button" value = "." onclick ="forms.answer.value = '. '">
-
-           
-            <input type="button"class ="blue1" value = "+" onclick ="forms.answer.value += '+'">
-           
+            <input type="button" value = "." onclick ="forms.answer.value = '. '">   
+            <input type="button"class ="blue1" value = "+" onclick ="forms.answer.value += '+'">     
             <input type="button" class ="blue1" id="equal" value = "=" onclick ="forms.answer.value = eval(forms.answer.value)">
-         
-            
-           
-           
         </div>
         </form>
     </div>
@@ -72,6 +59,14 @@
         let timep = document.getElementById("time");
         timep.innerHTML = formattedTime;
     }
+    const date  = new Date()
+    let year = date.getFullYear();
+    let month = date.getMonth()+1;
+    let todayDate = date.getDate();
+    let formattedDate = `${todayDate}-${month}-${year}`;
+    console.log(formattedDate);
+    let fixdate = document.getElementById("fixdate")
+    fixdate.innerHTML = formattedDate;
 
 
     setInterval(() => {

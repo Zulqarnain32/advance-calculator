@@ -29,12 +29,30 @@ p{
 }
 .line{
     position: absolute;
-    top: 19px;
-    left: 116px;
+    top: 21px;
+    left: 90px;
     height: 7px;
     width: 40px;
     background-color: rgb(65, 70, 70);
     border-radius: 20px;
+}
+.circle{
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 21px;
+    left: 137px;
+    background-color: rgb(65, 70, 70);
+}
+#fixdate{
+    color: rgb(65, 70, 70);
+    position: absolute;
+    top: 17px;
+    right: 90px;
+    font-size: 10px;
+    font-family: sans-serif;
+    font-weight: 800;
 }
 #battery{
     position: absolute;
@@ -70,16 +88,8 @@ p{
     color: rgb(17, 59, 138);
     font-weight: 900;
 }
-.circle{
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
-    position: absolute;
-    top: 19px;
-    left: 170px;
-   
-    background-color: rgb(65, 70, 70);
-}
+
+
 input[type = "text"]{
     height: 100px;
 
