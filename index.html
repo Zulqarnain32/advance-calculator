@@ -10,68 +10,72 @@
 </head>
 <body>
     <div class="container">
-       <p id = "time"> 00:00:00</p>
-       <div class="line"></div>
-       <div class="circle"></div>
-       <div id="fixdate">00-00-00</div>
-       <i class="fa-solid fa-battery-three-quarters" id="battery"></i>
-       <i class="fa-solid fa-wifi" id="wifi"></i>
-       <i class="fa-solid fa-house-chimney" id="house"></i>
-       <i class="fa-solid fa-bars" id="menu"></i>
-       <i class="fa-solid fa-volume-high" id="volume"></i>
-    <div class="form-style">
-
-        <form name ="forms" >
-            <input type="text" name="answer" placeholder="0"><br>
-            <div class="small-container">
-            <input type="button"class="blue" value = "AC" onclick ="forms.answer.value = ''">
-            <input type="button"class="blue" value = "+/-" onclick ="forms.answer.value += '+/-'">
-            <input type="button"class="blue" value = "%" onclick ="forms.answer.value += '%'">
-            <input type="button"class="blue" value = "/" onclick ="forms.answer.value += '/'">
-            <input type="button" value = "7" onclick ="forms.answer.value += '7'">
-            <input type="button" value = "8" onclick ="forms.answer.value += '8'">
-            <input type="button" value = "9" onclick ="forms.answer.value += '9'">
-            <input type="button"class ="blue1" value = "*" onclick ="forms.answer.value += '*'">
-            <input type="button" value = "4" onclick ="forms.answer.value += '4'">
-            <input type="button" value = "5" onclick ="forms.answer.value += '5'">
-            <input type="button" value = "6" onclick ="forms.answer.value += '6'">
-            <input type="button"class ="blue1" value = "-" onclick ="forms.answer.value += '-'">       
-            <input type="button" value = "1" onclick ="forms.answer.value += '1'">
-            <input type="button" value = "2" onclick ="forms.answer.value += '2'">
-            <input type="button" value = "3" onclick ="forms.answer.value += '3'">     
-            <input type="button" value = "0" onclick ="forms.answer.value += '0'">
-            <input type="button" value = "." onclick ="forms.answer.value = '. '">   
-            <input type="button"class ="blue1" value = "+" onclick ="forms.answer.value += '+'">     
-            <input type="button" class ="blue1" id="equal" value = "=" onclick ="forms.answer.value = eval(forms.answer.value)">
+        <p id="time">00:00:00</p>
+        <div class="line"></div>
+        <div class="circle"></div>
+        <div id="fixdate">00-00-00</div>
+        <i class="fa-solid fa-battery-three-quarters" id="battery"></i>
+        <i class="fa-solid fa-wifi" id="wifi"></i>
+        <i class="fa-solid fa-house-chimney" id="house"></i>
+        <i class="fa-solid fa-bars" id="menu"></i>
+        <i class="fa-solid fa-volume-high" id="volume"></i>
+        <div class="form-style">
+            <form name="forms">
+                <input type="text" name="answer" placeholder="0" id="ansid"><br>
+                <div class="small-container">
+                    <input type="button" class="blue" value="AC" onclick="forms.answer.value = ''">
+                    <input type="button" class="blue" value="+/-" onclick="forms.answer.value += '+/-'">
+                    <input type="button" class="blue" value="%" onclick="forms.answer.value += '%'">
+                    <input type="button" class="blue" value="/" onclick="forms.answer.value += '/'">
+                    <input type="button" value="7" onclick="forms.answer.value += '7'">
+                    <input type="button" value="8" onclick="forms.answer.value += '8'">
+                    <input type="button" value="9" onclick="forms.answer.value += '9'">
+                    <input type="button" class="blue1" value="*" onclick="forms.answer.value += '*'">
+                    <input type="button" value="4" onclick="forms.answer.value += '4'">
+                    <input type="button" value="5" onclick="forms.answer.value += '5'">
+                    <input type="button" value="6" onclick="forms.answer.value += '6'">
+                    <input type="button" class="blue1" value="-" onclick="forms.answer.value += '-'">
+                    <input type="button" value="1" onclick="forms.answer.value += '1'">
+                    <input type="button" value="2" onclick="forms.answer.value += '2'">
+                    <input type="button" value="3" onclick="forms.answer.value += '3'">
+                    <input type="button" value="0" onclick="forms.answer.value += '0'">
+                    <input type="button" value="." onclick="forms.answer.value += '.'">
+                    <input type="button" class="blue1" value="+" onclick="forms.answer.value += '+'">
+                    <input type="button" class="blue1" id="equal" value="=" onclick="evaluateAnswer()">
+                </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
-<script>
-    const findTime = () => {
-        let time = new Date();
-        let hours = String(time.getHours()).padStart(2, '0');
-        let minutes = String(time.getMinutes()).padStart(2, '0');
-        let seconds = String(time.getSeconds()).padStart(2, '0');
+    <script>
+        const findTime = () => {
+            let time = new Date();
+            let hours = String(time.getHours()).padStart(2, '0');
+            let minutes = String(time.getMinutes()).padStart(2, '0');
+            let seconds = String(time.getSeconds()).padStart(2, '0');
+            let formattedTime = `${hours}:${minutes}:${seconds}`;
+            document.getElementById("time").innerHTML = formattedTime;
+        };
 
-        let formattedTime = `${hours}:${minutes}:${seconds}`;
+        const date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let todayDate = date.getDate();
+        let formattedDate = `${todayDate}-${month}-${year}`;
+        document.getElementById("fixdate").innerHTML = formattedDate;
 
-        let timep = document.getElementById("time");
-        timep.innerHTML = formattedTime;
-    }
-    const date  = new Date()
-    let year = date.getFullYear();
-    let month = date.getMonth()+1;
-    let todayDate = date.getDate();
-    let formattedDate = `${todayDate }-${ month }-${ year}`;
-    console.log(formattedDate);
-    let fixdate = document.getElementById("fixdate")
-    fixdate.innerHTML = formattedDate;
+        const evaluateAnswer = () => {
+            let ansid = document.getElementById("ansid");
+            ansid.style.textAlign = "center"
+            let answer = eval(forms.answer.value);
+            if (answer === 10) {
+                forms.answer.value = "I Love You ❤️";
+            } 
+             else {
+                forms.answer.value = answer;
+            }
+        };
 
-
-    setInterval(() => {
-        findTime();
-    }, 1000);
-</script>
+        setInterval(findTime, 1000);
+    </script>
 </body>
 </html>
